@@ -183,7 +183,7 @@
 							"method": "POST",
 							"headers": {},
 							"url": "https://management.azure.com/subscriptions/a935fdb5-f6c2-49a1-996a-f5ec5cf270e0/resourceGroups/rajupractice2/providers/Microsoft.DataFactory/factories/rajupracticeadf2/pipelines/RESTAPI/createRun?api-version=2018-06-01",
-							"body": {},
+							"body": "{\"Df\"}",
 							"authentication": {
 								"type": "MSI",
 								"resource": "https://management.azure.com/"
