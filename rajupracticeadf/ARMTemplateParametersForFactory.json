@@ -1,0 +1,66 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "rajupracticeadf"
+		},
+		"LS_adls_connectionString": {
+			"value": "DefaultEndpointsProtocol=https;AccountName=rajuadlspractice;EndpointSuffix=core.windows.net;"
+		},
+		"Copy_tables_data_properties_typeProperties_server": {
+			"value": "rajupracticesqlserver.database.windows.net"
+		},
+		"Copy_tables_data_properties_typeProperties_database": {
+			"value": "practicesqldb"
+		},
+		"Copy_tables_data_properties_typeProperties_userName": {
+			"value": "rajusql"
+		},
+		"LS_SQL_properties_typeProperties_server": {
+			"value": "rajupracticesqlserver.database.windows.net"
+		},
+		"LS_SQL_properties_typeProperties_database": {
+			"value": "practicesqldb"
+		},
+		"LS_SQL_properties_typeProperties_userName": {
+			"value": "rajusql"
+		},
+		"LS_SQL_Multi_parameters_properties_typeProperties_server": {
+			"value": "@{linkedService().Srv_name}"
+		},
+		"LS_SQL_Multi_parameters_properties_typeProperties_database": {
+			"value": "@{linkedService().Db_Name}"
+		},
+		"LS_SQL_Multi_parameters_properties_typeProperties_userName": {
+			"value": "rajusql"
+		},
+		"LS_SQL_Parameter_properties_typeProperties_server": {
+			"value": "rajupracticesqlserver.database.windows.net"
+		},
+		"LS_SQL_Parameter_properties_typeProperties_database": {
+			"value": "@{linkedService().db_name}"
+		},
+		"LS_SQL_Parameter_properties_typeProperties_userName": {
+			"value": "rajusql"
+		},
+		"rajupractice_properties_typeProperties_baseUrl": {
+			"value": "https://rajupractice.vault.azure.net/"
+		},
+		"Event_Trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/a935fdb5-f6c2-49a1-996a-f5ec5cf270e0/resourceGroups/dataengpractice/providers/Microsoft.Storage/storageAccounts/rajuadlspractice"
+		},
+		"Tumbling_Trigger_properties_pipeline_parameters_Window_StartTime": {
+			"value": "@trigger().outputs.windowStartTime"
+		},
+		"Tumbling_Trigger_properties_pipeline_parameters_Window_EndTime": {
+			"value": "@trigger().outputs.windowEndTime"
+		},
+		"Tumbling_Trigger1_properties_pipeline_parameters_Window_StartTime": {
+			"value": "@trigger().outputs.windowStartTime"
+		},
+		"Tumbling_Trigger1_properties_pipeline_parameters_Window_EndTime": {
+			"value": "@trigger().outputs.windowEndTime"
+		}
+	}
+}
