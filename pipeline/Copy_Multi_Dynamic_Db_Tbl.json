@@ -1,0 +1,104 @@
+{
+	"name": "Copy_Multi_Dynamic_Db_Tbl",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_Multi_Dynamic_Db_Tbl",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Dynamic_multi_db_tbl",
+						"type": "DatasetReference",
+						"parameters": {
+							"srv_name": {
+								"value": "@pipeline().parameters.src_srv_name",
+								"type": "Expression"
+							},
+							"db_name": {
+								"value": "@pipeline().parameters.src_db_name",
+								"type": "Expression"
+							},
+							"tbl_name": {
+								"value": "@pipeline().parameters.src_tbl_name",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Dynamic_multi_db_tbl",
+						"type": "DatasetReference",
+						"parameters": {
+							"srv_name": {
+								"value": "@pipeline().parameters.dest_srv_name",
+								"type": "Expression"
+							},
+							"db_name": {
+								"value": "@pipeline().parameters.dest_db_name",
+								"type": "Expression"
+							},
+							"tbl_name": {
+								"value": "@pipeline().parameters.dest_tbl_name",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"src_srv_name": {
+				"type": "string"
+			},
+			"src_db_name": {
+				"type": "string"
+			},
+			"src_tbl_name": {
+				"type": "string"
+			},
+			"dest_srv_name": {
+				"type": "string"
+			},
+			"dest_db_name": {
+				"type": "string"
+			},
+			"dest_tbl_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-09-17T06:58:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

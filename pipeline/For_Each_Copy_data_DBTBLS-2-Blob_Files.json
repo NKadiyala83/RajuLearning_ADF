@@ -1,0 +1,168 @@
+{
+	"name": "For_Each_Copy_data_DBTBLS-2-Blob_Files",
+	"properties": {
+		"description": "Copy multiple db files to blob storage\n",
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.Tables_list",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy_tables_data-2-blob",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "Dynammic_DB_TBLS_data",
+									"type": "DatasetReference",
+									"parameters": {
+										"Schema": {
+											"value": "@item().SCHEMA",
+											"type": "Expression"
+										},
+										"TableName": {
+											"value": "@item().TABLENAME",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Dest_DBTBL_data_copy",
+									"type": "DatasetReference",
+									"parameters": {
+										"Filename": {
+											"value": "@item().TABLENAME",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"Tables_list": {
+				"type": "array",
+				"defaultValue": [
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "Staging_4"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "Staging_5"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "DAILY_COPYLIST"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "test1"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "TEST2"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "SRC_TBLX"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "STG_TBLX"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "SRC_TBLY"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "STG_TBLY"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "Source_Input_1"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "Source_Input_2"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "Source_Input_3"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "Source_Input_4"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "Source_Input_5"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "Staging_1"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "Staging_2"
+					},
+					{
+						"SCHEMA": "dbo",
+						"TABLENAME": "Staging_3"
+					}
+				]
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-09-22T19:13:40Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

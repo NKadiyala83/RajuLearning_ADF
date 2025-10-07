@@ -1,0 +1,24 @@
+{
+	"name": "Copy_tables_data",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "rajupracticesqlserver.database.windows.net",
+			"database": "practicesqldb",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "rajusql",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "rajupractice",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "rajusql"
+			}
+		}
+	}
+}

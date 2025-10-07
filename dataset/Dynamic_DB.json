@@ -1,0 +1,13 @@
+{
+	"name": "Dynamic_DB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_Parameter",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

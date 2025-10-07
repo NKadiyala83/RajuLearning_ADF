@@ -1,0 +1,31 @@
+{
+	"name": "Run_Other_DF",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://management.azure.com/subscriptions/a935fdb5-f6c2-49a1-996a-f5ec5cf270e0/resourceGroups/rajupractice2/providers/Microsoft.DataFactory/factories/rajupracticeadf2/pipelines/RESTAPI/createRun?api-version=2018-06-01",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://management.azure.com/"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-10-06T04:16:45Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

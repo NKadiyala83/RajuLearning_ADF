@@ -1,0 +1,41 @@
+{
+	"name": "Dynamic_multi_db_tbl",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_Multi_parameters",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"Srv_name": {
+					"value": "@dataset().srv_name",
+					"type": "Expression"
+				},
+				"Db_Name": {
+					"value": "@dataset().db_name",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"srv_name": {
+				"type": "string"
+			},
+			"db_name": {
+				"type": "string"
+			},
+			"tbl_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().tbl_name",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

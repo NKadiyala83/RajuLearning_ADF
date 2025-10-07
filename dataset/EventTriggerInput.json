@@ -1,0 +1,45 @@
+{
+	"name": "EventTriggerInput",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_adls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "EventTrigger",
+				"container": "practice"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ACTIVITY_ID",
+				"type": "String"
+			},
+			{
+				"name": "INPUT_SCHEMA",
+				"type": "String"
+			},
+			{
+				"name": "INPUT_TABLENAME",
+				"type": "String"
+			},
+			{
+				"name": "OUTPUT_SCHEMA",
+				"type": "String"
+			},
+			{
+				"name": "OUTPUT_TABLENAME",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

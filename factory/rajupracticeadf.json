@@ -1,0 +1,9 @@
+{
+	"name": "rajupracticeadf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9b642541-d6de-4aef-a728-c28d7ee71a92",
+		"tenantId": "2149c31e-89f3-4810-a53d-5521d0de09f1"
+	}
+}

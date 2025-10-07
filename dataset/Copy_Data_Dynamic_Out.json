@@ -1,0 +1,45 @@
+{
+	"name": "Copy_Data_Dynamic_Out",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_adls",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"dest_container": {
+				"type": "string"
+			},
+			"dest_directory": {
+				"type": "string"
+			},
+			"dest_filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().dest_filename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().dest_directory",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().dest_container",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,25 @@
+{
+	"name": "Event_Trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Event_Based_Trig_Pipeline",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/practice/blobs/EventTrigger",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/a935fdb5-f6c2-49a1-996a-f5ec5cf270e0/resourceGroups/dataengpractice/providers/Microsoft.Storage/storageAccounts/rajuadlspractice",
+			"events": [
+				"Microsoft.Storage.BlobCreated",
+				"Microsoft.Storage.BlobDeleted"
+			]
+		}
+	}
+}

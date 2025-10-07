@@ -1,0 +1,32 @@
+{
+	"name": "LS_SQL_Multi_parameters",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"Srv_name": {
+				"type": "String"
+			},
+			"Db_Name": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "@{linkedService().Srv_name}",
+			"database": "@{linkedService().Db_Name}",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "rajusql",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "rajupractice",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "rajusql"
+			}
+		}
+	}
+}

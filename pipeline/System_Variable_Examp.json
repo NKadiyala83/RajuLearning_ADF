@@ -1,0 +1,32 @@
+{
+	"name": "System_Variable_Examp",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Test_sys_var",
+					"value": {
+						"value": "@concat(pipeline().Pipeline, '||' ,pipeline().RunId)",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"Test_sys_var": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-09-24T16:55:43Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
