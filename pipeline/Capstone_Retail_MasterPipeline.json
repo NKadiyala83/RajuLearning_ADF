@@ -1,0 +1,47 @@
+{
+	"name": "Capstone_Retail_MasterPipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Capstone_Source_2_Staging",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Capstone_Retail_Source_to_Staging",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Capstone_Staging_2_DWH",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Capstone_Source_2_Staging",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Capstone_Retails_Staging_to_Datawarehouse",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": []
+	}
+}
