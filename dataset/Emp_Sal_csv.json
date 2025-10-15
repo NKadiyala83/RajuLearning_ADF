@@ -19,28 +19,7 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "emp_id",
-				"type": "String"
-			},
-			{
-				"name": "Name",
-				"type": "String"
-			},
-			{
-				"name": "Salary",
-				"type": "String"
-			},
-			{
-				"name": "department_name",
-				"type": "String"
-			},
-			{
-				"name": "country_id",
-				"type": "String"
-			}
-		]
+		"schema": []
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
