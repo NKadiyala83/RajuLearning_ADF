@@ -1,0 +1,9 @@
+{
+	"name": "nagapracticeadf",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "270068d0-c101-47bb-ab62-d278c6c89f8d",
+		"tenantId": "152a8833-fe91-46ce-8d01-e66d50b44119"
+	}
+}
